@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Display contents of current directory, formatted as required
+
+for item in *; do
+  # Skip non-existing files (safety check)
+  [ -e "$item" ] || continue
+
+  # If the filename contains a dash, show the part after the first dash
+  if [[ "$item" == *-* ]]; then
+    echo "${item#*-}"
+  else
+    # If no dash, show the name as-is
+    echo "$item"
+  fi
+done
